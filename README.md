@@ -1,16 +1,20 @@
 # EXP-3-B-Automatic-street-light-systems-using-LDR-sensor
 
 ## Aim: 
-
+To execute the -Automatic-street-light-systems-using-LDR-sensor  in tinkercad software
 ## Hardware / Software Tools required:
-
-	PC/ Laptop with Internet connection
-	Tinker CAD tool (Online)
-	Arduino UNO 
-	Board/ESP-32
-	Photoresistor
+-PC/ Laptop with Internet connection
+-Tinker CAD tool (Online)
+-Arduino UNO 
+-Board/ESP-32
+-Photoresistor
   
+## Schematic Diagram:
+<img width="973" height="745" alt="image" src="https://github.com/user-attachments/assets/9cf45d55-ace8-4830-9d72-df48cd9fc3d2" />
+
 ## Circuit Diagram:
+
+<img width="1151" height="697" alt="image" src="https://github.com/user-attachments/assets/57ec9b54-27b1-4094-8164-4df6074b0f86" />
 
 
 ## Theory :
@@ -21,12 +25,12 @@ The board is programmable using the Arduino IDE (Integrated Development Environm
 ## Procedure:
 
 ### Step 1: 
-	Set Up the Tinkercad Environment
+Set Up the Tinkercad Environment
 •	Log in to Tinkercad: Open Tinkercad in your web browser and log in to your account.
 •	Create a New Circuit: In the Tinkercad dashboard, click on "Circuits" and then select "Create New Circuit."
 ### Step 2: 
 
-	Add Components to the Circuit
+Add Components to the Circuit
 •	Arduino Uno: Drag an Arduino Uno board from the components panel onto the workspace.
 •	LDR Sensor: Search for the Photoresistor in the components panel and drag it into the workspace.
 •	Breadboard: Drag a small breadboard to the workspace to help with wiring connections.
@@ -34,7 +38,7 @@ The board is programmable using the Arduino IDE (Integrated Development Environm
 •	Wires: Use wires to connect the components.
 
 ### Step 3: 
-	Connect the LDR Sensor to the Arduino
+Connect the LDR Sensor to the Arduino
 •	LDR Sensor Pins: The LDR has two terminals (pins).
 •	One LDR Pin to 5V: Connect one terminal of the LDR to the Arduino 5V pin.
 •	Other LDR Pin to Analog Input and Resistor:
@@ -65,11 +69,52 @@ o	The middle point (between LDR and resistor) connects to the Arduino analog inp
 •	Save the Circuit: Click "Save" to keep your circuit design and code for future use.
 
 ## Code:
+```
+// Pins for LEDs
+int led1 = 2;
+int led2 = 3;
+int led3 = 4;
 
+// LDR pin
+int ldrPin = A0;
+int ldrValue = 0; // store sensor reading
+
+// Light threshold (adjust based on your room light)
+int thresholdValue = 500;
+
+void setup() {
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  Serial.begin(9600); // For debugging
+}
+
+void loop() {
+  ldrValue = analogRead(ldrPin); // read LDR value
+  Serial.println(ldrValue); // check the value in Serial Monitor
+
+  if (ldrValue < thresholdValue) {
+    // It's dark → turn ON lights
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, HIGH);
+    digitalWrite(led3, HIGH);
+  } else {
+    // It's bright → turn OFF lights
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, LOW);
+    digitalWrite(led3, LOW);
+  }
+
+  delay(200); // small delay for stability
+}
+
+```
 
 
 ## Output:
- 
 
+https://github.com/user-attachments/assets/83de2366-077d-4582-ba46-67574b92a16d
 
 ## Result:
+Automatic-street-light-systems-using-LDR-sensor using tinkercad is successfully executed.
+
